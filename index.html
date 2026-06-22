@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รักเค้ามั้ย 💖</title>
+
+<style>
+body{
+margin:0;
+overflow:hidden;
+font-family:'Arial',sans-serif;
+background:linear-gradient(135deg,#ffd6e7,#ffeef5);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.container{
+text-align:center;
+background:white;
+padding:40px;
+border-radius:30px;
+box-shadow:0 0 30px rgba(255,105,180,.3);
+max-width:500px;
+position:relative;
+z-index:10;
+}
+
+.cat{
+font-size:90px;
+animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+50%{transform:translateY(-10px);}
+}
+
+h1{
+color:#ff4f93;
+}
+
+p{
+font-size:22px;
+color:#444;
+}
+
+button{
+border:none;
+padding:15px 35px;
+font-size:22px;
+border-radius:50px;
+cursor:pointer;
+transition:.3s;
+font-weight:bold;
+}
+
+#love{
+background:#56ff59;
+}
+
+#no{
+background:#ff7676;
+position:absolute;
+}
+
+.heart{
+position:absolute;
+font-size:25px;
+animation:float 5s linear infinite;
+}
+
+@keyframes float{
+from{
+transform:translateY(100vh);
+opacity:1;
+}
+to{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="container" id="box">
+
+<div class="cat">🐱💙</div>
+
+<h1>รักเค้ามั้ยยย 🥺💖</h1>
+
+<p id="text">
+ตั้งแต่รู้จักเธอ โลกของเค้าก็น่ารักขึ้นเยอะเลย 🌷
+</p>
+
+<button id="love">💚 รักที่สุดเลย</button>
+
+<br><br>
+
+<button id="no">🙈 ยังไม่บอก</button>
+
+</div>
+
+<script>
+
+let loveSize = 1;
+let count = 0;
+
+const noBtn = document.getElementById("no");
+const loveBtn = document.getElementById("love");
+const text = document.getElementById("text");
+
+const msgs = [
+"แน่ใจนะะะ 🥺",
+"ใจร้ายจังงง 😭💖",
+"เค้างอนแล้วนะ 😿",
+"กดรักเถอะน้าาา 🥹💕",
+"เค้าขอร้องงง 💞"
+];
+
+noBtn.addEventListener("mouseover",()=>{
+
+count++;
+
+loveSize += 0.25;
+
+loveBtn.style.transform =
+`scale(${loveSize})`;
+
+text.innerHTML =
+msgs[Math.min(count-1,msgs.length-1)];
+
+const x =
+Math.random()*(window.innerWidth-120);
+
+const y =
+Math.random()*(window.innerHeight-80);
+
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+});
+
+loveBtn.onclick = ()=>{
+
+document.body.innerHTML = `
+<div style="
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+background:linear-gradient(135deg,#ffb6d9,#ffe5f1);
+font-family:Arial;
+">
+<h1 style="
+font-size:60px;
+color:#ff2d7a;
+">
+💖 เย้~~ 💖
+</h1>
+
+<h2 style="
+font-size:35px;
+color:#444;
+">
+เค้าก็รักเธอที่สุดเลยยย 🥺💕
+</h2>
+
+<p style="
+font-size:24px;
+">
+ขอบคุณที่อยู่ด้วยกันนะ ❤️
+</p>
+
+<div style="font-size:120px;">
+🐱💙
+</div>
+</div>
+`;
+};
+
+function createHeart(){
+
+const heart =
+document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="💖";
+
+heart.style.left=
+Math.random()*100+"vw";
+
+heart.style.fontSize=
+(20+Math.random()*30)+"px";
+
+heart.style.animationDuration=
+(3+Math.random()*4)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},7000);
+
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
+</html>
